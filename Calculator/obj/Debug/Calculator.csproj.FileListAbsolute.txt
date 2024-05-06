@@ -1,0 +1,7 @@
+C:\Users\Taqiyah\OneDrive\Desktop\Deloitte\Learnin C Sharp\Calculator\Calculator\Calculator\bin\Debug\Calculator.exe.config
+C:\Users\Taqiyah\OneDrive\Desktop\Deloitte\Learnin C Sharp\Calculator\Calculator\Calculator\bin\Debug\Calculator.exe
+C:\Users\Taqiyah\OneDrive\Desktop\Deloitte\Learnin C Sharp\Calculator\Calculator\Calculator\bin\Debug\Calculator.pdb
+C:\Users\Taqiyah\OneDrive\Desktop\Deloitte\Learnin C Sharp\Calculator\Calculator\Calculator\obj\Debug\Calculator.csproj.AssemblyReference.cache
+C:\Users\Taqiyah\OneDrive\Desktop\Deloitte\Learnin C Sharp\Calculator\Calculator\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
+C:\Users\Taqiyah\OneDrive\Desktop\Deloitte\Learnin C Sharp\Calculator\Calculator\Calculator\obj\Debug\Calculator.exe
+C:\Users\Taqiyah\OneDrive\Desktop\Deloitte\Learnin C Sharp\Calculator\Calculator\Calculator\obj\Debug\Calculator.pdb
