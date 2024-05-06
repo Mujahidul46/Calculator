@@ -378,13 +378,13 @@
           }
         }
       },
-      "Calculator/1.0.0": {
+      "CalculatorApp/1.0.0": {
         "type": "project",
         "compile": {
-          "bin/placeholder/Calculator.dll": {}
+          "bin/placeholder/CalculatorApp.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Calculator.dll": {}
+          "bin/placeholder/CalculatorApp.dll": {}
         }
       }
     }
@@ -980,15 +980,15 @@
         "version.txt"
       ]
     },
-    "Calculator/1.0.0": {
+    "CalculatorApp/1.0.0": {
       "type": "project",
-      "path": "../Calculator/Calculator.csproj",
-      "msbuildProject": "../Calculator/Calculator.csproj"
+      "path": "../Calculator/CalculatorApp.csproj",
+      "msbuildProject": "../Calculator/CalculatorApp.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Calculator >= 1.0.0",
+      "CalculatorApp >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
       "NUnit >= 3.14.0",
       "NUnit.Analyzers >= 3.9.0",
@@ -1023,8 +1023,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Taqiyah\\OneDrive\\Desktop\\Deloitte\\Learnin C Sharp\\Calculator\\Calculator\\Calculator\\Calculator.csproj": {
-              "projectPath": "C:\\Users\\Taqiyah\\OneDrive\\Desktop\\Deloitte\\Learnin C Sharp\\Calculator\\Calculator\\Calculator\\Calculator.csproj"
+            "C:\\Users\\Taqiyah\\OneDrive\\Desktop\\Deloitte\\Learnin C Sharp\\Calculator\\Calculator\\Calculator\\CalculatorApp.csproj": {
+              "projectPath": "C:\\Users\\Taqiyah\\OneDrive\\Desktop\\Deloitte\\Learnin C Sharp\\Calculator\\Calculator\\Calculator\\CalculatorApp.csproj"
             }
           }
         }

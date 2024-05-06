@@ -5,16 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 
 // DONE: build a calculator which can do 4 operations
+// DONE: isolate logic for each operation by placing it inside its own method.
 // TODO: Make tests for each operation
+// TODO: Make multiple tests for each operation, including negative numbers.
+// TODO: Handle error of user entering letter instead of number.
+// TODO: Check if it can do calculations with floats.
+// TODO: Refactor any computational code out? Should only be input/output and main flow of program.
 
-namespace Calculator
+namespace CalculatorApp
 {
-    internal class Program
+    internal class Program // Handles input and output
     {
         static void Main(string[] args)
         {
-            int num1;
-            int num2;
+            Calculator calculator = new Calculator();
+            int num1, num2;
             string operation;
             string operationSymbol;
             int? result = null;
@@ -47,46 +52,31 @@ namespace Calculator
             else if (operation == "4") { operationSymbol = "/"; }
             else { operationSymbol = null; }
 
-            Console.WriteLine("{0} {1} ? = ", num1, operationSymbol ); // Display the calculation thus far
+            Console.WriteLine("{0} {1} ? = ", num1, operationSymbol );
             Console.WriteLine("Please enter your second number.");
             num2 = Convert.ToInt32(Console.ReadLine());
 
-
-            if(operation == "1") // Add
-            {
-                result = num1 + num2;
-            }
-            else if (operation == "2") // Subtract
-            {
-                result = num1 - num2;
-            }
-            else if (operation == "3") // Multiply
-            {
-                result = num1 * num2;
-            }
-            else if (operation == "4")
-            {
-                if (num2 == 0)
-                {
-                    Console.WriteLine("Error: Can't divide by 0.");
-                    result = null;
-                }
-                else
-                {
-                    result = num1 / num2;
-                }
-            }
-            else
-            {
-                //fill
+            // Perform the calculation
+            switch(operation) {
+                case "1":
+                    result = calculator.Add(num1, num2);
+                    break;
+                case "2":
+                    result = calculator.Subtract(num1, num2);
+                    break;
+                case "3":
+                    result = calculator.Multiply(num1, num2);
+                    break;
+                case "4":
+                    result = calculator.Divide(num1, num2);
+                    break;
             }
 
-            if (result.HasValue)
-            {
+
+            if (result.HasValue) {
                 Console.WriteLine("Answer: {0}", result);
             }
-            else
-            {
+            else {
                 Console.WriteLine("No valid result could be computed.");
             }
             
