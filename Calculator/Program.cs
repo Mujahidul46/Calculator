@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 // DONE: build a calculator which can do 4 operations
 // DONE: isolate logic for each operation by placing it inside its own method.
-// TODO: Make tests for each operation
-// TODO: Make multiple tests for each operation, including negative numbers.
-// TODO: Handle error of user entering letter instead of number.
-// TODO: Check if it can do calculations with floats.
+// DONE: Make tests for each operation
+// DONE: Make multiple tests for each operation, including negative numbers.
+// DONE: Handle error of user entering letter instead of number.
+// TODO: Allow operations with floats
 // TODO: Refactor any computational code out? Should only be input/output and main flow of program.
 
 namespace CalculatorApp
@@ -28,8 +28,8 @@ namespace CalculatorApp
             Console.WriteLine("I can add, subtract, multiply or divide numbers 2 numbers for you.\n");
             Console.WriteLine("Please follow the instructions to input the calculation you want me to solve.\n");
 
-            Console.WriteLine("Please enter your first number.");
-            num1 = Convert.ToInt32(Console.ReadLine());
+
+            num1 = CheckInteger("Please enter your first number.");
 
             Console.WriteLine("Please enter the operation. Choose from 1, 2, 3 or 4.");
             Console.WriteLine("1) Add");
@@ -53,11 +53,10 @@ namespace CalculatorApp
             else { operationSymbol = null; }
 
             Console.WriteLine("{0} {1} ? = ", num1, operationSymbol );
-            Console.WriteLine("Please enter your second number.");
-            num2 = Convert.ToInt32(Console.ReadLine());
+            num2 = CheckInteger("Please enter your second number.");
 
             // Perform the calculation
-            switch(operation) {
+            switch (operation) {
                 case "1":
                     result = calculator.Add(num1, num2);
                     break;
@@ -84,5 +83,29 @@ namespace CalculatorApp
             Console.WriteLine("Press any key to exit the program.");
             Console.ReadKey();
         }
+
+        static int CheckInteger(string prompt)
+        {
+            int number = 0;
+            bool inputIsValid = false;
+
+            Console.WriteLine(prompt);
+
+            while (!inputIsValid)
+            {
+                inputIsValid = int.TryParse(Console.ReadLine(), out number);
+                if (!inputIsValid)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+            }
+
+            return number;
+        }
+
+
+
     }
+
+
 }
