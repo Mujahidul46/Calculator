@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 // DONE: Make tests for each operation
 // DONE: Make multiple tests for each operation, including negative numbers.
 // DONE: Handle error of user entering letter instead of number.
-// TODO: Allow operations with floats
+// DONE: Allow operations with floats
 // TODO: Refactor any computational code out? Should only be input/output and main flow of program.
+// TODO: Allow user to use program again at end.
 
 namespace CalculatorApp
 {
@@ -19,10 +20,10 @@ namespace CalculatorApp
         static void Main(string[] args)
         {
             Calculator calculator = new Calculator();
-            int num1, num2;
+            float num1, num2;
             string operation;
             string operationSymbol;
-            int? result = null;
+            float? result = null;
 
             Console.WriteLine("Hi, I'm your calculator!\n");
             Console.WriteLine("I can add, subtract, multiply or divide numbers 2 numbers for you.\n");
@@ -84,16 +85,16 @@ namespace CalculatorApp
             Console.ReadKey();
         }
 
-        static int CheckInteger(string prompt)
+        static float CheckInteger(string prompt)
         {
-            int number = 0;
+            float number = 0;
             bool inputIsValid = false;
 
             Console.WriteLine(prompt);
 
             while (!inputIsValid)
             {
-                inputIsValid = int.TryParse(Console.ReadLine(), out number);
+                inputIsValid = float.TryParse(Console.ReadLine(), out number);
                 if (!inputIsValid)
                 {
                     Console.WriteLine("Invalid input. Please enter a number.");

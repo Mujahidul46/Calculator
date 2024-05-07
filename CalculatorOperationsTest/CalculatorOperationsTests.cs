@@ -17,10 +17,10 @@ namespace CalculatorOperationsTest
         [Test]
         public void AdditionTestReturnsCorrectSum() {
             // Arrange
-            int num1 = 5, num2 = 3;
+            float num1 = 5, num2 = 3;
 
             // Act
-            int result = _calculator.Add(num1, num2);
+            float result = _calculator.Add(num1, num2);
 
             // Assert
             Assert.That(result, Is.EqualTo(8));
@@ -29,10 +29,10 @@ namespace CalculatorOperationsTest
         [Test]
         public void SubtractionTestReturnsCorrectDifference() {
             // Arrange
-            int num1 = 10, num2 = 4;
+            float num1 = 10, num2 = 4;
 
             // Act
-            int result = _calculator.Subtract(num1, num2);
+            float result = _calculator.Subtract(num1, num2);
 
             // Assert
             Assert.That(result, Is.EqualTo(6));
@@ -41,10 +41,10 @@ namespace CalculatorOperationsTest
         [Test]
         public void MultiplicationTestReturnsCorrectProduct() {
             // Arrange
-            int num1 = 7, num2 = 8;
+            float num1 = 7, num2 = 8;
 
             // Act
-            int result = _calculator.Multiply(num1, num2);
+            float result = _calculator.Multiply(num1, num2);
 
             // Assert
             Assert.That(result, Is.EqualTo(56));
@@ -54,10 +54,10 @@ namespace CalculatorOperationsTest
         public void DivisionTestReturnsCorrectQuotient()
         {
             // Arrange
-            int num1 = 21, num2 = 3;
+            float num1 = 21, num2 = 3;
 
             // Act
-            int? result = _calculator.Divide(num1, num2);
+            float? result = _calculator.Divide(num1, num2);
 
             // Assert
             Assert.That(result, Is.EqualTo(7));
@@ -67,10 +67,10 @@ namespace CalculatorOperationsTest
         public void DivisionBy0ReturnsNull()
         {
             // Arrange
-            int num1 = 16, num2 = 0;
+            float num1 = 16, num2 = 0;
 
             // Act
-            int? result = _calculator.Divide(num1, num2);
+            float? result = _calculator.Divide(num1, num2);
 
             // Assert
             Assert.IsNull(result);
@@ -80,10 +80,10 @@ namespace CalculatorOperationsTest
         public void AdditionWithNegativeNumbers()
         {
             // Arrange
-            int num1 = -5, num2 = 3;
+            float num1 = -5, num2 = 3;
 
             // Act
-            int result = _calculator.Add(num1, num2);
+            float result = _calculator.Add(num1, num2);
 
             // Assert
             Assert.That(result, Is.EqualTo(-2));
@@ -93,10 +93,10 @@ namespace CalculatorOperationsTest
         public void MultiplicationWithNegativeNumbers()
         {
             // Arrange
-            int num1 = -7, num2 = 8;
+            float num1 = -7, num2 = 8;
 
             // Act
-            int result = _calculator.Multiply(num1, num2);
+            float result = _calculator.Multiply(num1, num2);
 
             // Assert
             Assert.That(result, Is.EqualTo(-56));
@@ -106,10 +106,10 @@ namespace CalculatorOperationsTest
         public void MultiplicationByZero()
         {
             // Arrange
-            int num1 = 10, num2 = 0;
+            float num1 = 10, num2 = 0;
 
             // Act
-            int result = _calculator.Multiply(num1, num2);
+            float result = _calculator.Multiply(num1, num2);
 
             // Assert
             Assert.That(result, Is.EqualTo(0));
