@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,77 +16,86 @@ using System.Threading.Tasks;
 
 namespace CalculatorApp
 {
+    enum Operation
+    {
+        Add = 1,
+        Subtract,
+        Multiply,
+        Divide
+    }
+
     internal class Program // Handles input and output
     {
         static void Main(string[] args)
         {
             Calculator calculator = new Calculator();
             float num1, num2;
-            string operation;
-            string operationSymbol;
             float? result = null;
 
             Console.WriteLine("Hi, I'm your calculator!\n");
             Console.WriteLine("I can add, subtract, multiply or divide numbers 2 numbers for you.\n");
             Console.WriteLine("Please follow the instructions to input the calculation you want me to solve.\n");
 
-
-            num1 = CheckInteger("Please enter your first number.");
-
-            Console.WriteLine("Please enter the operation. Choose from 1, 2, 3 or 4.");
-            Console.WriteLine("1) Add");
-            Console.WriteLine("2) Subtract");
-            Console.WriteLine("3) Multiply");
-            Console.WriteLine("4) Divide");
-            operation = Console.ReadLine();
-
-            while (operation != "1" && operation != "2" && operation != "3" && operation != "4") // While invalid input, keep asking user for valid input
+            do
             {
-                Console.WriteLine("Invalid input. Try again.");
-                Console.WriteLine("Please enter the operation. Choose from 1 (+), 2 (-), 3 (*) or 4 (/).");
-                operation = Console.ReadLine();
-            }
+                num1 = CheckNumber("Please enter your first number.");
 
-            // Convert operation input (1,2,3,4) into symbol (+,-,x,/)
-            if (operation == "1") { operationSymbol = "+"; }
-            else if (operation == "2") { operationSymbol = "-"; }
-            else if (operation == "3") { operationSymbol = "*"; }
-            else if (operation == "4") { operationSymbol = "/"; }
-            else { operationSymbol = null; }
+                Console.WriteLine("Please enter the operation. Choose from 1, 2, 3 or 4.");
+                Console.WriteLine("1) Add");
+                Console.WriteLine("2) Subtract");
+                Console.WriteLine("3) Multiply");
+                Console.WriteLine("4) Divide");
 
-            Console.WriteLine("{0} {1} ? = ", num1, operationSymbol );
-            num2 = CheckInteger("Please enter your second number.");
+                if (!Enum.TryParse(Console.ReadLine(), out Operation operation))
+                {
+                    Console.WriteLine("Invalid input. Please enter a number between 1 and 4.\n1 (+), 2 (-), 3 (*) or 4 (/).");
+                    continue;
+                }
 
-            // Perform the calculation
-            switch (operation) {
-                case "1":
-                    result = calculator.Add(num1, num2);
-                    break;
-                case "2":
-                    result = calculator.Subtract(num1, num2);
-                    break;
-                case "3":
-                    result = calculator.Multiply(num1, num2);
-                    break;
-                case "4":
-                    result = calculator.Divide(num1, num2);
-                    break;
-            }
+                // Displaying the chosen operation symbol
+                string operationSymbol = GetOperationSymbol(operation);
+                Console.WriteLine("{0} {1} ?", num1, operationSymbol);
+
+                num2 = CheckNumber("Please enter your second number.");
+
+                // Perform the calculation
+                switch (operation)
+                {
+                    case Operation.Add:
+                        result = calculator.Add(num1, num2);
+                        break;
+                    case Operation.Subtract:
+                        result = calculator.Subtract(num1, num2);
+                        break;
+                    case Operation.Multiply:
+                        result = calculator.Multiply(num1, num2);
+                        break;
+                    case Operation.Divide:
+                        result = calculator.Divide(num1, num2);
+                        break;
+                    default:
+                        result = null;
+                        break;
+                }
 
 
-            if (result.HasValue) {
-                Console.WriteLine("Answer: {0}", result);
-            }
-            else {
-                Console.WriteLine("No valid result could be computed.");
-            }
-            
+
+                if (result.HasValue) {
+                    Console.WriteLine("Answer: {0}", result);
+                }
+                else {
+                    Console.WriteLine("No valid result could be computed.");
+                }
+
+                Console.WriteLine("Would you like to perform another calculation? (yes/no)");
+            } while (Console.ReadLine().Trim().ToLower() == "yes");
+
             Console.WriteLine("That's it! Thanks for using the program!");
             Console.WriteLine("Press any key to exit the program.");
             Console.ReadKey();
         }
 
-        static float CheckInteger(string prompt)
+        static float CheckNumber(string prompt)
         {
             float number = 0;
             bool inputIsValid = false;
@@ -103,6 +113,24 @@ namespace CalculatorApp
 
             return number;
         }
+
+        static string GetOperationSymbol(Operation operation)
+        {
+            switch (operation)
+            {
+                case Operation.Add:
+                    return "+";
+                case Operation.Subtract:
+                    return "-";
+                case Operation.Multiply:
+                    return "*";
+                case Operation.Divide:
+                    return "/";
+                default:
+                    return "?";
+            }
+        }
+
 
 
 
