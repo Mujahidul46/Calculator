@@ -11,8 +11,9 @@ using System.Threading.Tasks;
 // DONE: Make multiple tests for each operation, including negative numbers.
 // DONE: Handle error of user entering letter instead of number.
 // DONE: Allow operations with floats
-// TODO: Refactor any computational code out? Should only be input/output and main flow of program.
-// TODO: Allow user to use program again at end.
+// DONE: Refactor any computational code out? Should only be input/output and main flow of program.
+// DONE: Allow user to use program again at end.
+// DONE: Test invalid inputs
 
 namespace CalculatorApp
 {
@@ -31,6 +32,7 @@ namespace CalculatorApp
             Calculator calculator = new Calculator();
             float num1, num2;
             float? result = null;
+            string input;
 
             Console.WriteLine("Hi, I'm your calculator!\n");
             Console.WriteLine("I can add, subtract, multiply or divide numbers 2 numbers for you.\n");
@@ -39,17 +41,24 @@ namespace CalculatorApp
             do
             {
                 num1 = CheckNumber("Please enter your first number.");
+                Operation operation;
 
-                Console.WriteLine("Please enter the operation. Choose from 1, 2, 3 or 4.");
-                Console.WriteLine("1) Add");
-                Console.WriteLine("2) Subtract");
-                Console.WriteLine("3) Multiply");
-                Console.WriteLine("4) Divide");
-
-                if (!Enum.TryParse(Console.ReadLine(), out Operation operation))
+                while (true)
                 {
-                    Console.WriteLine("Invalid input. Please enter a number between 1 and 4.\n1 (+), 2 (-), 3 (*) or 4 (/).");
-                    continue;
+                    Console.WriteLine("Please enter the operation. Choose from 1, 2, 3 or 4.");
+                    Console.WriteLine("1) Add");
+                    Console.WriteLine("2) Subtract");
+                    Console.WriteLine("3) Multiply");
+                    Console.WriteLine("4) Divide");
+
+                    if (Enum.TryParse(Console.ReadLine(), out operation) && Enum.IsDefined(typeof(Operation), operation))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please enter a number between 1 and 4.\n1 (+), 2 (-), 3 (*) or 4 (/).\n");
+                    }
                 }
 
                 // Displaying the chosen operation symbol
@@ -88,10 +97,24 @@ namespace CalculatorApp
                 }
 
                 Console.WriteLine("Would you like to perform another calculation? (yes/no)");
-            } while (Console.ReadLine().Trim().ToLower() == "yes");
+                do
+                {
+                    input = Console.ReadLine().Trim().ToLower();
 
-            Console.WriteLine("That's it! Thanks for using the program!");
+                    if (input == "yes" || input == "no")
+                    {
+                        break;
+                    }
+                    Console.WriteLine("\nInvalid input. Would you like to perform another calculation? (yes/no)");
+                }
+                while (true);
+
+            } while (input == "yes");
+
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("\nI hope I was useful! Thanks for using the program!");
             Console.WriteLine("Press any key to exit the program.");
+            Console.WriteLine("----------------------------------------------------");
             Console.ReadKey();
         }
 
